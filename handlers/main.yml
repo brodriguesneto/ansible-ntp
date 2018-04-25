@@ -1,0 +1,10 @@
+---
+- name: Restart NTP service
+  systemd: 
+    name: ntp
+    state: restarted
+
+- name: Restart Cron service
+  systemd:
+    name: cron
+    state: restarted

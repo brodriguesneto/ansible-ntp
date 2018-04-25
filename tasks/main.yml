@@ -1,0 +1,27 @@
+---
+- name: Install packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop:
+    - ntp
+    - tzdata
+
+- name: Configure ntp.conf
+  template:
+    src: ntp.conf.j2
+    dest: /etc/ntp.conf
+  notify:
+    - Restart NTP service
+
+- name: Enable and start NTP service
+  systemd:
+    name: ntp
+    enabled: yes
+    state: started
+
+- name: Configure Timezone
+  timezone:
+    name: "{{ ntp_timezone }}"
+  notify: Restart Cron service

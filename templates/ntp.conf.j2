@@ -1,0 +1,20 @@
+# Ansible template
+
+{% if ansible_virtualization_role == 'guest' %}
+tinker panic 0
+{% endif %}
+
+statsdir /var/log/ntpstats/
+driftfile /var/lib/ntp/ntp.drift
+statistics loopstats peerstats clockstats
+filegen loopstats file loopstats type day enable
+filegen peerstats file peerstats type day enable
+filegen clockstats file clockstats type day enable
+disable monitor
+
+restrict -4 127.0.0.1
+restrict -6 ::1
+
+{% for server in ntp_servers %}
+server {{ server }} iburst
+{% endfor %}

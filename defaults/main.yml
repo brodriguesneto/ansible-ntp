@@ -1,0 +1,7 @@
+---
+ntp_servers:
+  - a.ntp.br
+  - b.ntp.br
+  - c.ntp.br
+
+ntp_timezone: America/Sao_Paulo

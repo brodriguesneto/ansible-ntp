@@ -1,0 +1,11 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANT_API_VERSION = 2
+
+Vagrant.configure(VAGRANT_API_VERSION) do |config|
+  config.ssh.insert_key = false
+  config.vm.define 'ubuntu' do |ubuntu|
+    ubuntu.vm.box = 'bento/ubuntu-16.04'
+  end
+end

@@ -6,9 +6,9 @@ galaxy_info:
   license: Apache License 2.0
   min_ansible_version: 2.5
   platforms:
-  - name: ubuntu
+  - name: Ubuntu
     versions:
-      - 16.04
+      - xenial
   galaxy_tags:
     - system
     - networking

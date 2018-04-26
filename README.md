@@ -45,6 +45,7 @@ Example Playbook
 
 ```YAML
 - hosts: all
+  become: True
   roles:
   - role: everporven.ntp
     ntp_timezone: America/Sao_Paulo

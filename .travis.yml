@@ -1,16 +1,16 @@
 ---
+service: docker
 sudo: required
 dist: trusty
 language: python
 python:
   - "3.6"
-before_install:
-  - sudo apt-get update
-  - sudo apt-get -y install vagrant virtualbox
-  - pip install ansible
+env:
+  - distro: ubuntu1604
+    playbook: test.yml
+
 script:
-  - cd tests
-  - ./test.sh
+  - ${PWD}/tests/test.sh
 notifications:
   webhooks: 
     - https://galaxy.ansible.com/api/v1/notifications/

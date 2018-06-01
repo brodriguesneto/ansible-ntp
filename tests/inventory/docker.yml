@@ -1,0 +1,4 @@
+defaults:
+  host: unix:///var/run/docker.sock
+  private_ssh_port: 22
+  default_ip: 127.0.0.1

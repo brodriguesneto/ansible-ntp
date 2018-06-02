@@ -1,5 +1,5 @@
 ---
-- hosts: ntp
+- hosts: all
   become: True
   roles:
     - role: everproven.ntp

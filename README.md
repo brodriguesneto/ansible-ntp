@@ -2,6 +2,7 @@ ntp
 ===
 
 [![Build Status](https://travis-ci.org/everproven/ansible-ntp.svg?branch=master)](https://travis-ci.org/everproven/ansible-ntp)
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-everproven.ntp-blue.svg)](https://galaxy.ansible.com/everproven/ntp/)
 
 An Ansible role that installs and configures [NTP] service on Linux.
 
@@ -10,6 +11,7 @@ Platforms
 
 Role tested on Linux operating systems:
 
+* Ubuntu Server 18.04 LTS
 * Ubuntu Server 16.04 LTS
 
 Requirements

@@ -1,28 +1,27 @@
-sudo: required
+---
 dist: trusty
-language: python
-python:
-  - "2.7"
+sudo: required
+
 services:
   - docker
-env:
-  global:
-    - PATH="/usr/bin:$PATH"
+
+language: python
+python:
+  - "3.6"
 
 before_install:
   - deactivate
+  - sudo -H pip install ansible=="2.5.4" docker-py
 
-install:
-  - sudo pip install docker-py
-  - sudo apt-get install -y sshpass software-properties-common python-software-properties
-  - sudo apt-add-repository -y ppa:ansible/ansible
-  - sudo apt-get update -qq
-  - sudo apt-get install -y ansible
-  - sudo rm /usr/bin/python && sudo ln -s /usr/bin/python2.7 /usr/bin/python
-  - ansible --version
+before_script:
+  - cd tests/travis
 
 script:
-  - ansible-playbook -i test/inventory test/test.yml --syntax-check
+  - ansible-playbook test.yml --syntax-check
+  - ansible-playbook test.yml
+  - ansible-playbook test.yml > ansible_run.out
+  - ./idempotence.sh ansible_run.out
 
 notifications:
-  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  webhooks: 
+    - https://galaxy.ansible.com/api/v1/notifications/

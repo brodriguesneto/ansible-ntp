@@ -3,8 +3,18 @@
   systemd: 
     name: ntp
     state: restarted
+  notify: Run ntpstat (ntpstat returns 0 if synchronised and non-zero otherwise)
 
-- name: Restart Cron service
+- name: Run ntpstat (ntpstat returns 0 if synchronised and non-zero otherwise)
+  command: ntpstat
+  retries: 6  
+  delay: 5
+  register: result
+  until: result.rc == 0
+  ignore_errors: "{{ ansible_check_mode }}"
+
+- name: Restart Cron service if exists
   systemd:
     name: cron
     state: restarted
+  when: "'enabled' in cron_daemon.stdout"

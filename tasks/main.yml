@@ -6,6 +6,7 @@
     update_cache: yes
   loop:
     - ntp
+    - ntpstat
     - tzdata
 
 - name: Configure ntp.conf
@@ -21,8 +22,23 @@
     enabled: yes
     state: started
 
+- name: Validate if systemd's cron.service exists
+  stat:
+    path: /lib/systemd/system/cron.service
+  register: cron_service
+  changed_when: False
+  check_mode: False
+
+- name: Validate cron.service status
+  command: systemctl status cron.service
+  when: cron_service.stat.exists
+  register: cron_daemon
+  failed_when:  cron_daemon.rc == 2
+  changed_when: False
+  check_mode: False
+
 - name: Configure Timezone
   timezone:
     name: "{{ ntp_timezone }}"
   ignore_errors: "{{ ansible_check_mode }}"
-  notify: Restart Cron service
+  notify: Restart Cron service if exists

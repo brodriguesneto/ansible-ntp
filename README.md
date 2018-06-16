@@ -4,7 +4,7 @@ ntp
 [![Build Status](https://travis-ci.org/everproven/ansible-ntp.svg?branch=master)](https://travis-ci.org/everproven/ansible-ntp)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-everproven.ntp-blue.svg)](https://galaxy.ansible.com/everproven/ntp/)
 
-An Ansible role that installs and configures [NTP] service on Linux.
+An Ansible role that installs and configures [NTP] service on Linux and sets Timezone.
 
 Platforms
 ---------
@@ -17,7 +17,7 @@ Role tested on Linux operating systems:
 Requirements
 ------------
 
-[Cron] service, The cron service will be reloaded every time the Timezone changes.
+None.
 
 Role Variables
 --------------
@@ -36,6 +36,8 @@ __ntp_timezone__: The Timezone to configure system-wide with its default value.
 ```YAML
 ntp_timezone: America/Sao_Paulo
 ```
+
+> The cron service will be reloaded every time the Timezone changes.
 
 Dependencies
 ------------

@@ -24,4 +24,5 @@
 - name: Configure Timezone
   timezone:
     name: "{{ ntp_timezone }}"
+  ignore_errors: "{{ ansible_check_mode }}"
   notify: Restart Cron service

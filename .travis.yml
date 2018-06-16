@@ -11,16 +11,17 @@ python:
 
 before_install:
   - deactivate
-  - sudo -H pip install ansible=="2.5.4" docker-py
+  - sudo -H pip install ansible=="2.5.5" docker-py
 
 before_script:
-  - cd tests/travis
+  - cd tests
 
 script:
+  - if [ -f requirements.yml ]; then ansible-galaxy install -r requirements.yml -p ../../; fi
   - ansible-playbook test.yml --syntax-check
+  - ansible-playbook test.yml --check
   - ansible-playbook test.yml
-  - ansible-playbook test.yml > ansible_run.out
-  - ./idempotence.sh ansible_run.out
+  - ansible-playbook test.yml | grep -q 'changed=0.*failed=0' && (echo 'Role has passed the idempotence test' && exit 0) || (echo 'Role has failed the idempotence test' && exit 1)
 
 notifications:
   webhooks: 

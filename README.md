@@ -1,8 +1,8 @@
 ntp
 ===
 
-[![Build Status](https://travis-ci.org/everproven/ansible-ntp.svg?branch=master)](https://travis-ci.org/everproven/ansible-ntp)
-[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-everproven.ntp-blue.svg)](https://galaxy.ansible.com/everproven/ntp/)
+[![Build Status](https://travis-ci.org/brodriguesneto/ansible.ntp.svg?branch=master)](https://travis-ci.org/brodriguesneto/ansible.ntp)
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-brodriguesneto.ntp-blue.svg)](https://galaxy.ansible.com/brodriguesneto/ntp/)
 
 An Ansible role that installs and configures [NTP] service on Linux and sets Timezone.
 
@@ -67,9 +67,9 @@ License
 Author Information
 ------------------
 
-[Ever Proven]
+[Boaventura Rodrigues Neto]
 
 [NTP]: https://en.wikipedia.org/wiki/Network_Time_Protocol
 [Cron]: https://en.wikipedia.org/wiki/Cron
-[Apache License 2.0]: https://github.com/everproven/ansible-ntp/blob/master/LICENSE
-[Ever Proven]: https://github.com/everproven
+[Apache License 2.0]: https://github.com/brodriguesneto/ansible.ntp/blob/master/LICENSE
+[Boaventura Rodrigues Neto]: https://github.com/brodriguesneto
